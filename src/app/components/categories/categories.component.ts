@@ -8,14 +8,25 @@ import categories from './categories.config';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
-	categories;
+	categories:Category[];
 
   constructor() { }
 
   ngOnInit() {
 		this.categories = categories;
-		console.log('h')
-		console.log(categories)
+		console.log(categories);
   }
 
+}
+
+interface Category {
+	title:string;
+	key:string;
+	options:Option[];
+}
+
+interface Option {
+	title:string;
+	start:number;
+	end:number;
 }
