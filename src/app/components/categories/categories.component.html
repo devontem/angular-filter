@@ -1,9 +1,14 @@
 <h2>Categories</h2>
-<div *ngFor="let category of categories">
-	<h3>{{ category.title }}</h3>
-	<ul>
-		<li *ngFor="let option of category.options">
-			{{ option.title }}
-		</li>
-	</ul>
-<div>
+<form>
+	<div *ngFor="let category of categories">
+		<h3>{{ category.title }}</h3>
+		<div *ngFor="let option of category.options">
+		    <div>
+		        <label>
+		            <input type="checkbox" name="option.title" [checked]="isChecked(category.key, option)" (change)="handleChange(category.key, option)">
+		            {{ option.title }}
+		        </label>
+		    </div>
+		</div>
+	</div>
+</form>
