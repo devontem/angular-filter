@@ -1,14 +1,23 @@
-<app-filter-display></app-filter-display>
-<app-categories
-  (filterUpdateEvent)="receiveMessage($event)"
-  [filters]="filters">
-</app-categories>
-
-<app-filter-display
-  [filters]="filters"
-  (filterUpdateEvent)="receiveMessage($event)">
-</app-filter-display>
-
-<app-items-list
-  [filters]="filters">
-</app-items-list>
+<div class="container">
+  <div class="row">
+    <div class="offset-md-3 col-md-9">
+      <app-filter-display
+        [filters]="filters"
+        (filterUpdateEvent)="receiveMessage($event)">
+      </app-filter-display>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3">
+      <app-categories
+        (filterUpdateEvent)="receiveMessage($event)"
+        [filters]="filters">
+      </app-categories>
+    </div>
+    <div class="col-md-9">
+      <app-items-list
+        [filters]="filters">
+      </app-items-list>
+    </div>
+  </div>
+</div>
