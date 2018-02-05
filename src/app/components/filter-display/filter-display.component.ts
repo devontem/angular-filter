@@ -11,20 +11,18 @@ export class FilterDisplayComponent implements OnInit {
 	_filters:Filter;
 	formattedList:object;
 
-	@Input() set filters(value){
+	@Input() set filters(value:Filter){
 		this._filters = value;
 		this.formattedList = this.formatList(value);
 	};
 	@Output() filterUpdateEvent:EventEmitter<object> = new EventEmitter<object>();
-
-	Objectkeys = Object.keys; // in order to iterate over object in template
 
 	constructor() { }
 
 	ngOnInit() {
 	}
 
-	formatList(filters){
+	formatList(filters:Filter){
 		var final = [];
 		Object.keys(filters).forEach((key) => {
 			filters[key].forEach((item) => {
@@ -34,7 +32,7 @@ export class FilterDisplayComponent implements OnInit {
 		return final;
 	}
 
-	handleClick(key, id){
+	handleClick(key:string, id:number){
 		console.log('delete ', id, this._filters);
 		this._filters[key] = this._filters[key].filter((item) => item.id !== id);
 

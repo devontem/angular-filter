@@ -2,6 +2,8 @@ import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
 import categories from './categories.config';
 import Filter from './../../interfaces/filter.interface';
+import Category from './../../interfaces/category.interface';
+import Option from './../../interfaces/option.interface';
 
 @Component({
   selector: 'app-categories',
@@ -30,11 +32,11 @@ export class CategoriesComponent implements OnInit {
 		console.log(categories);
 	}
 
-	isChecked(key, option){
+	isChecked(key:string, option:Option){
 		return this.filters[key].some((item) => item.id === option.id);
 	}
 
-	handleChange(key, option){
+	handleChange(key:string, option:Option){
 		console.log(key, option)
 
 		// if the value is already present, remove else add
