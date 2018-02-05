@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
 import categories from './categories.config';
+import Filter from './../../interfaces/filter.interface';
 
 @Component({
   selector: 'app-categories',
@@ -43,32 +44,9 @@ export class CategoriesComponent implements OnInit {
 			this.filters[key].push(option);
 		}
 
-		this.filterUpdateEvent.emit(this.filters);
+		this.filterUpdateEvent.emit(Object.assign({}, this.filters));
 		// trigger output emitter
 		console.log('this.filters['+key+']', this.filters[key]);
 	}
 
-}
-
-interface Filter {
-	year:Option[];
-	mpg:Option[];
-	cyl:Option[];
-	acc:Option[];
-	dsp:Option[];
-	lbs:Option[];
-	hp:Option[];
-}
-
-interface Category {
-	title:string;
-	key:string;
-	options:Option[];
-}
-
-interface Option {
-	id:number;
-	title:string;
-	start:number;
-	end:number;
 }

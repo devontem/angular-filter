@@ -13,16 +13,16 @@ export class FilterDisplayComponent implements OnInit {
 
 	Objectkeys = Object.keys; // in order to iterate over object in template
 
-  constructor() { }
+	constructor() { }
 
-  ngOnInit() {
-  }
+	ngOnInit() {
+	}
 
-  handleClick(key, id){
-  	console.log('delete ', id);
-  	this.filters[key] = this.filters[key].filter((item) => item.id !== id);
+	handleClick(key, id){
+		console.log('delete ', id);
+		this.filters[key] = this.filters[key].filter((item) => item.id !== id);
 
-  	this.filterUpdateEvent.emit(this.filters);
-  }
+		this.filterUpdateEvent.emit(Object.assign({}, this.filters));
+	}
 
-}
+	}
