@@ -1,0 +1,13 @@
+.category-block {
+	margin-bottom: 20px;
+}
+
+.category-block .checkboxes {
+	margin-left: 20px;
+}
+
+.category-container {
+	padding: 10px;
+	background: #eee;
+	border-radius: 5px;
+}

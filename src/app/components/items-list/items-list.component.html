@@ -1,3 +1,8 @@
-<div *ngFor="let item of results">
-{{item.name}} {{item.mpg}}
+<div class="product-group col-md-4" *ngFor="let item of results">
+	<div class="card">
+	  <div class="card-body">
+	    <h5 class="card-title">{{item.name}}</h5>
+	    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+	  </div>
+	</div>
 </div>

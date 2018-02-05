@@ -1,7 +1,12 @@
-<div *ngIf="filters">
-	<div *ngFor="let key of Objectkeys(filters)">
-		<div *ngFor="let item of filters[key]">
-			{{key}}: {{item.start}} {{item.end ? ' - ' + item.end : '+'}} <button (click)="handleClick(key, item.id)">Delete</button>
+<div class="col-md-12" *ngIf="_filters">
+	<div class="card filter-display">
+		<div class="dib">
+			<div class="dib" *ngFor="let item of formattedList">
+				<span class="badge filter-block">
+					{{item.key}}: {{item.start}} {{item.end ? ' - ' + item.end : '+'}} 
+					<span class="badge badge-danger btn" (click)="handleClick(item.key, item.id)">x</span>
+				</span>
+			</div>
 		</div>
 	</div>
 </div>
