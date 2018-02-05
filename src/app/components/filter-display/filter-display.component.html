@@ -1,3 +1,7 @@
-<p>
-  filter-display works!
-</p>
+<div *ngIf="filters">
+	<div *ngFor="let key of Objectkeys(filters)">
+		<div *ngFor="let item of filters[key]">
+			{{key}}: {{item.start}} {{item.end ? ' - ' + item.end : '+'}}
+		</div>
+	</div>
+</div>

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import Filter from './../../interfaces/filter.interface';
 
 @Component({
   selector: 'app-items-list',
@@ -6,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./items-list.component.css']
 })
 export class ItemsListComponent implements OnInit {
+	@Input() filters:Filter;
 
   constructor() { }
 
   ngOnInit() {
   }
-
 }
