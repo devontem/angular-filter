@@ -12,42 +12,45 @@ export class ItemsListComponent implements OnInit {
 	@Input() filters:Filter;
 	results = [];
 
-  constructor() { }
+	constructor() { }
 
-  ngOnChanges(changes){
-  	this.applyFilters();
-  }
+	ngOnChanges(changes){
+		this.applyFilters();
+	}
 
-  ngOnInit() {
-  	this.getRawData();
-  }
+	ngOnInit() {
+		this.getRawData();
+	}
 
-  getRawData(){
-  	var fl = data();
-  	this.rawData = fl;
-  	this.results = fl;
-  }
+	getRawData(){
+		var fl = data();
+		this.rawData = fl;
+		this.results = fl;
+	}
 
-  applyFilters(){
-  	var result = this.rawData; // initializing list to plain data;
+	applyFilters(){
+		var result = this.rawData; // initializing list to plain data;
 
-  	Object.keys(this.filters).forEach((key) => {
-  		var filterCriteriaArray = this.filters[key];
-  		var subsections = []; // array for the mutally exclusive subsections
+		Object.keys(this.filters).forEach((key) => {
+			var filterCriteriaArray = this.filters[key];
+			var subsections = []; // array for the mutally exclusive subsections
 
-  		// create the subsection of filtered results
-  		filterCriteriaArray.forEach((filter, i) => {
-  			subsections[i] = result.filter((item) => item[key] >= filter.start && item[key] <= filter.end);
-  		});
+			// create the subsection of filtered results
+			filterCriteriaArray.forEach((filter, i) => {
+				subsections[i] = result.filter((item) => {
+					 // set to true if filter.end equals null (meaning show all after the start)
+					return item[key] >= filter.start && (filter.end ? item[key] <= filter.end : true);
+				});
+			});
 
-  		// merge them into one array
-  		subsections.forEach((item, i) => {
-  			result = (i === 0) ? subsections[0] : result.concat(subsections[i])
-  		});
-  	});
+			// merge them into one array
+			subsections.forEach((item, i) => {
+				result = (i === 0) ? subsections[0] : result.concat(subsections[i])
+			});
+		});
 
-  	this.results = result;
-  };
+		this.results = result;
+	};
 }
 
 
