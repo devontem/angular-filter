@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
 import categories from './categories.config';
 
@@ -9,7 +9,9 @@ import categories from './categories.config';
 })
 export class CategoriesComponent implements OnInit {
 	categories:Category[];
-	filters:Filter;
+
+	@Input() filters:Filter;
+	@Output() filterUpdateEvent:EventEmitter<object> = new EventEmitter<object>();
 
   constructor() { }
 
@@ -24,14 +26,11 @@ export class CategoriesComponent implements OnInit {
 			lbs: [],
 			hp: []
 		};
-
 		console.log(categories);
 	}
 
 	isChecked(key, option){
-		return this.filters[key].some((item) => {
-			return (item.start === option.start) && (item.end === option.end);
-		});
+		return this.filters[key].some((item) => item.id === option.id);
 	}
 
 	handleChange(key, option){
@@ -39,11 +38,12 @@ export class CategoriesComponent implements OnInit {
 
 		// if the value is already present, remove else add
 		if (this.isChecked(key, option)){
-			this.filters[key] = this.filters[key].filter((item) => item.start !== option.start && item.end !== option.end);
+			this.filters[key] = this.filters[key].filter((item) => item.id !== option.id);
 		} else {
 			this.filters[key].push(option);
 		}
 
+		this.filterUpdateEvent.emit(this.filters);
 		// trigger output emitter
 		console.log('this.filters['+key+']', this.filters[key]);
 	}
@@ -67,6 +67,7 @@ interface Category {
 }
 
 interface Option {
+	id:number;
 	title:string;
 	start:number;
 	end:number;
