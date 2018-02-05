@@ -1,7 +1,7 @@
 <div *ngIf="filters">
 	<div *ngFor="let key of Objectkeys(filters)">
 		<div *ngFor="let item of filters[key]">
-			{{key}}: {{item.start}} {{item.end ? ' - ' + item.end : '+'}}
+			{{key}}: {{item.start}} {{item.end ? ' - ' + item.end : '+'}} <button (click)="handleClick(key, item.id)">Delete</button>
 		</div>
 	</div>
 </div>

@@ -5,7 +5,8 @@
 </app-categories>
 
 <app-filter-display
-  [filters]="filters">
+  [filters]="filters"
+  (filterUpdateEvent)="receiveMessage($event)">
 </app-filter-display>
 
 <app-items-list
