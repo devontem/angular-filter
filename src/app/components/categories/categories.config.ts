@@ -1,4 +1,4 @@
-const categories = [
+export const categories = [
 	{ 
 		title: "Year", 
 		key: "year",
@@ -165,5 +165,3 @@ const categories = [
 		} ]
 	}
 ];
-
-export default categories;

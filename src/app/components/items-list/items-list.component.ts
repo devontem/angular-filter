@@ -10,7 +10,7 @@ import { CarsService } from './../../services/cars.service';
   styleUrls: ['./items-list.component.css']
 })
 export class ItemsListComponent implements OnInit {
-	rawData:any= [];
+	rawData:any = [];
 	results:any = [];
 
 	@Input() filters:Filter;
@@ -26,7 +26,7 @@ export class ItemsListComponent implements OnInit {
 	}
 
 	getRawData(){
-		this.rawData = this.CarsService.getData().subscribe((data)=>{
+		this.CarsService.getData().subscribe((data)=>{
 	  		this.rawData = this.results = data;
 	  	}, (error) => {
 	  		console.log('Error:', <any>error);

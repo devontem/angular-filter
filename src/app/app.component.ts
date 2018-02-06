@@ -26,6 +26,5 @@ export class AppComponent implements OnInit {
 
 	receiveMessage($event){
 		this.filters = $event;
-		console.log('inside root', $event);
 	}
 }

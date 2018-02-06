@@ -19,8 +19,7 @@ export class FilterDisplayComponent implements OnInit {
 
 	constructor() { }
 
-	ngOnInit() {
-	}
+	ngOnInit() {  }
 
 	formatList(filters:Filter){
 		var final = [];
@@ -33,9 +32,7 @@ export class FilterDisplayComponent implements OnInit {
 	}
 
 	handleClick(key:string, id:number){
-		console.log('delete ', id, this._filters);
 		this._filters[key] = this._filters[key].filter((item) => item.id !== id);
-
 		this.filterUpdateEvent.emit(Object.assign({}, this._filters));
 	}
 }

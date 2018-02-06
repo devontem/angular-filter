@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 
-import categories from './categories.config';
+import { categories } from './categories.config';
 import Filter from './../../interfaces/filter.interface';
 import Category from './../../interfaces/category.interface';
 import Option from './../../interfaces/option.interface';
@@ -11,44 +11,29 @@ import Option from './../../interfaces/option.interface';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit {
-	categories:Category[];
+	categories:Category[] = categories;
 
 	@Input() filters:Filter;
 	@Output() filterUpdateEvent:EventEmitter<object> = new EventEmitter<object>();
 
-  constructor() { }
+  	constructor() { }
 
-  ngOnInit() {
-		this.categories = categories;
-		this.filters = {
-			year: [],
-			mpg: [],
-			cyl: [],
-			acc: [],
-			dsp: [],
-			lbs: [],
-			hp: []
-		};
-		console.log(categories);
-	}
+  	ngOnInit() { 
+  		this.categories = categories;
+  	}
 
 	isChecked(key:string, option:Option){
 		return this.filters[key].some((item) => item.id === option.id);
 	}
 
 	handleChange(key:string, option:Option){
-		console.log(key, option)
-
 		// if the value is already present, remove else add
 		if (this.isChecked(key, option)){
 			this.filters[key] = this.filters[key].filter((item) => item.id !== option.id);
 		} else {
 			this.filters[key].push(option);
 		}
-
 		this.filterUpdateEvent.emit(Object.assign({}, this.filters));
-		// trigger output emitter
-		console.log('this.filters['+key+']', this.filters[key]);
 	}
 
 }
