@@ -3,3 +3,15 @@
 	margin-bottom: 20px;
 
 }
+
+.display-props {
+	font-size: 0.8em;
+}
+
+.display-props span {
+	font-weight: bold;
+}
+
+.display-props p {
+	margin-bottom: 0px;
+}
