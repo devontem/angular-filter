@@ -23,7 +23,7 @@ describe('FilterDisplayComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should formatList from type Filter to array', () => {
+  it('formatList should format list from type Filter to array', () => {
     fixture = TestBed.createComponent(FilterDisplayComponent);
     component = fixture.componentInstance;
 
@@ -31,10 +31,9 @@ describe('FilterDisplayComponent', () => {
     var filters2 = Object.assign({}, filters, {acc: [{title: '0-10', start: 0, end: 10, id:5}]})
     expect(component.formatList(filters).length).toEqual(1);
     expect(component.formatList(filters2).length).toEqual(2);
-    spyOn(component.filterUpdateEvent, 'emit');
   });
 
-  it('should handleClick method should emit filterUpdateEvent', () => {
+  it('handleClick method should emit filterUpdateEvent', () => {
     fixture = TestBed.createComponent(FilterDisplayComponent);
     component = fixture.componentInstance;
 
