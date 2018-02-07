@@ -20,4 +20,12 @@ describe('CarsService', () => {
   it('should be created', inject([CarsService], (service: CarsService) => {
     expect(service).toBeTruthy();
   }));
+
+  it('carsUrl should be "/assets/cars.json"', inject([CarsService], (service: CarsService) => {
+    expect(service.carsUrl).toEqual('/assets/cars.json');
+  }));
+
+  it('categoriesUrl should be "/assets/categories.json"', inject([CarsService], (service: CarsService) => {
+    expect(service.categoriesUrl).toEqual('/assets/categories.json');
+  }));
 });
