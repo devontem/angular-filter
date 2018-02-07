@@ -4,12 +4,17 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class CarsService {
-	devHttpUrl:string = '/assets/cars.json';
+	carsUrl:string = '/assets/cars.json';
+	categoriesUrl:string = '/assets/categories.json'
 
 	constructor(private http:HttpClient) { }
 
   getData(){
-  	return this.http.get(this.devHttpUrl);
+  	return this.http.get(this.carsUrl);
+  }
+
+  getCategories(){
+  	return this.http.get(this.categoriesUrl);
   }
 
 }
